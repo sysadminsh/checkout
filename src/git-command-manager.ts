@@ -415,8 +415,8 @@ class GitCommandManager {
   }
 
   async tryClean(): Promise<boolean> {
-    const output = await this.execGit(['clean', '-ffdx'], true)
-    return output.exitCode === 0
+    //const output = await this.execGit(['clean', '-ffdx'], true)
+    return true
   }
 
   async tryConfigUnset(

@@ -802,8 +802,8 @@ class GitCommandManager {
     }
     tryClean() {
         return __awaiter(this, void 0, void 0, function* () {
-            const output = yield this.execGit(['clean', '-ffdx'], true);
-            return output.exitCode === 0;
+            //const output = yield this.execGit(['clean', '-ffdx'], true);
+            return true;
         });
     }
     tryConfigUnset(configKey, globalConfig) {
@@ -1068,11 +1068,12 @@ function prepareExistingDirectory(git, repositoryPath, repositoryUrl, clean, ref
                 // Clean
                 if (clean) {
                     core.startGroup('Cleaning the repository');
-                    if (!(yield git.tryClean())) {
+                    /*if (!(yield git.tryClean())) {
                         core.debug(`The clean command failed. This might be caused by: 1) path too long, 2) permission issue, or 3) file in use. For further investigation, manually run 'git clean -ffdx' on the directory '${repositoryPath}'.`);
                         remove = true;
                     }
-                    else if (!(yield git.tryReset())) {
+                    else*/
+                    if (!(yield git.tryReset())) {
                         remove = true;
                     }
                     core.endGroup();
